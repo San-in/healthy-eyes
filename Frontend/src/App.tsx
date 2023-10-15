@@ -1,11 +1,7 @@
-import React, {JSX} from 'react';
-import {Text, View} from 'react-native';
+import * as React from 'react';
+import {JSX} from 'react';
+import {Navigation} from './navigations/Navigation';
 
-const App = (): JSX.Element => {
-  return (
-    <View>
-      <Text>App</Text>
-    </View>
-  );
+export const App = (): JSX.Element => {
+  return <Navigation />;
 };
-export default App;
