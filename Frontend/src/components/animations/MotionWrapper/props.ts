@@ -5,7 +5,17 @@ export type motionWrapperProps = {
   trajectory: 'circle' | 'quarter' | 'triangle';
   x?: number;
   y?: number;
-  speed?: 1000 | 2000 | 3000 | 4000 | 5000 | 6000 | 7000 | 8000 | 9000 | 10000;
+  duration?:
+    | 1000
+    | 2000
+    | 3000
+    | 4000
+    | 5000
+    | 6000
+    | 7000
+    | 8000
+    | 9000
+    | 10000;
   children: React.ReactNode;
 };
 

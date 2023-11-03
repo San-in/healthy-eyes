@@ -1,14 +1,19 @@
 import React, {useEffect, useRef} from 'react';
 import {View, Animated, Easing} from 'react-native';
 import {styles} from './stytles';
+import {RotateWrapperProps} from './props';
 
-export const RotateWrapper = ({children, clockwiseDirection}: any) => {
+export const RotateWrapper = ({
+  children,
+  clockwiseDirection = true,
+  duration = 2000,
+}: RotateWrapperProps) => {
   const rotateValue = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
     const animation = Animated.timing(rotateValue, {
       toValue: 1,
-      duration: 500,
+      duration: duration,
       easing: Easing.linear,
       useNativeDriver: false,
     });
