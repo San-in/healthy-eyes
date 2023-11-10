@@ -24,4 +24,5 @@ export type ColorPalette = {
   blue10: string;
   blue20: string;
   black10: string;
+  black025: string;
 };

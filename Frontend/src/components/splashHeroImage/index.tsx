@@ -6,60 +6,43 @@ import {MotionWrapper} from '../animations/MotionWrapper';
 import {DocumentIcon} from '../../assets/icons/DocumentIcon';
 import {EnvelopeIcon} from '../../assets/icons/EnvelopeIcon';
 import {ClockAnimationIcon} from '../animations/ClockAnimationIcon';
-import {COLORS} from '../../styles/colors';
-import {BACKGROUND_COLOR} from '../../styles/background';
+import {BACKGROUND_COLOR} from '../../styles/backgrounds';
 import {DownloadingAnimationIcon} from '../animations/DownloadingAnimationIcon';
+import {styles} from './styles';
 
 export const SplashHeroImage = () => {
-  const windowWidth = Dimensions.get('window').width;
-  const windowHeight = Dimensions.get('window').height;
-  const containerWidth =
+  const windowWidth: number = Dimensions.get('window').width;
+  const windowHeight: number = Dimensions.get('window').height;
+  const containerWidth: number =
     windowWidth < windowHeight ? windowWidth : windowHeight;
-  const containerHeight =
+  const containerHeight: number =
     windowWidth < windowHeight ? windowHeight : windowWidth;
 
   let imageName;
   if (windowWidth <= 320) {
-    imageName = require('../../assets/splashHeroBg/splash-hero-bg-1x.png'); // Для устройств с базовым разрешением
+    imageName = require('../../assets/splashHeroBg/splash-hero-bg-1x.png');
   } else if (windowWidth <= 640) {
-    imageName = require('../../assets/splashHeroBg/splash-hero-bg-2x.png'); // Для устройств с разрешением 2x
+    imageName = require('../../assets/splashHeroBg/splash-hero-bg-2x.png');
   } else {
-    imageName = require('../../assets/splashHeroBg/splash-hero-bg-3x.png'); // Для устройств с разрешением 3x
+    imageName = require('../../assets/splashHeroBg/splash-hero-bg-3x.png');
   }
 
   return (
     <View
-      style={{
-        alignSelf: 'center',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'white',
-        height: containerHeight * 0.4,
-        width: containerWidth * 0.8,
-        position: 'relative',
-      }}>
-      <Image
-        source={imageName}
-        style={{
-          width: '100%',
-          height: '100%',
-          objectFit: 'contain',
-          position: 'absolute',
-          top: 0,
-          left: 0,
-        }}
-      />
-      <View
-        style={{
-          position: 'absolute',
-          top: '27%',
-          left: '70%',
-        }}>
+      style={[
+        styles.container,
+        {
+          height: containerHeight * 0.4,
+          width: containerWidth * 0.85,
+        },
+      ]}>
+      <Image source={imageName} style={styles.image} />
+      <View style={styles.gearContainer}>
         <RotateWrapper>
           <GearIcon />
         </RotateWrapper>
       </View>
-      <View style={{position: 'absolute', top: '2%'}}>
+      <View style={styles.clockContainer}>
         <ClockAnimationIcon
           radius={25}
           mainColor={BACKGROUND_COLOR.secondaryLight}
@@ -67,17 +50,17 @@ export const SplashHeroImage = () => {
           speed={1}
         />
       </View>
-      <View style={{position: 'absolute', right: '25%', top: '20%'}}>
+      <View style={styles.documentContainer}>
         <MotionWrapper trajectory={'circle'} x={50} y={30} duration={2000}>
           <DocumentIcon />
         </MotionWrapper>
       </View>
-      <View style={{position: 'absolute', left: '33%', top: '22%'}}>
+      <View style={styles.envelopeContainer}>
         <MotionWrapper trajectory={'circle'} x={70} y={50}>
           <EnvelopeIcon />
         </MotionWrapper>
       </View>
-      <View style={{position: 'absolute', left: '39%', top: '40%'}}>
+      <View style={styles.downloadingContainer}>
         <DownloadingAnimationIcon
           itemHeight={8}
           itemWidth={14}

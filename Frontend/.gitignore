@@ -1,6 +1,5 @@
 # OSX
 #
-.DS_Store
 
 # Xcode
 #
@@ -64,3 +63,8 @@ yarn-error.log
 
 # testing
 /coverage
+
+.DS_Store
+.ruby-version
+ios/Frontend.xcodeproj/project.pbxproj
+ios/Podfile.lock

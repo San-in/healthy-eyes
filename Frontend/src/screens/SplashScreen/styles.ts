@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {PADDING_HORIZONTAL_BASIC} from '../../styles/vars';
+import {TEXT_COLOR} from '../../styles/text';
 
 export const styles = StyleSheet.create({
   container: {
@@ -8,7 +9,15 @@ export const styles = StyleSheet.create({
   },
   header: {
     paddingHorizontal: PADDING_HORIZONTAL_BASIC,
-    marginTop: '-10%',
-    marginBottom: '20%',
+    marginTop: '-3%',
+    marginBottom: '5%',
+  },
+  heroText: {
+    fontSize: 55,
+    lineHeight: 54,
+    color: TEXT_COLOR.primary,
+  },
+  heroText__accent: {
+    color: TEXT_COLOR.accent,
   },
 });

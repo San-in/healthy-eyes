@@ -1,5 +1,4 @@
 export type MainStackParamList = {
-  SplashScreen: undefined;
   HomeStack: HomeScreenParamList;
   MenuStack: MenuScreenParamList;
   ProfileStack: ProfileScreenParamList;
@@ -16,7 +15,12 @@ export type ProfileScreenParamList = {
 };
 
 export type AuthStackParamList = {
-  SplashScreen: undefined;
   SignInScreen: undefined;
   SignUpScreen: undefined;
+};
+
+export type RootStackParamList = {
+  SplashScreen: undefined;
+  MainStack: MainStackParamList;
+  AuthStack: AuthStackParamList;
 };

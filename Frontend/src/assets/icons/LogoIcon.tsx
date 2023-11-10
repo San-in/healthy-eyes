@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Svg, {SvgProps, Defs, ClipPath, Path, G} from 'react-native-svg';
-export const LogoIcon = (props: SvgProps) => (
+import {JSX} from 'react';
+export const LogoIcon = (props: SvgProps): JSX.Element => (
   <Svg {...props} viewBox="0 0 300 300">
     <Defs>
       <ClipPath id="a">

@@ -1,7 +1,7 @@
 import Svg, {Path, SvgProps} from 'react-native-svg';
-import React from 'react';
+import React, {JSX} from 'react';
 
-export const EnvelopeIcon = (props: SvgProps) => (
+export const EnvelopeIcon = (props: SvgProps): JSX.Element => (
   <Svg width={34} height={28} fill="none" {...props}>
     <Path
       fill="#FED36A"

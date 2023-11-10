@@ -26,4 +26,5 @@ export const COLORS: ColorPalette = {
   blue10: '#2C4653',
   blue20: '#3A3E47',
   black10: '#000000',
+  black025: '#00000040',
 };
