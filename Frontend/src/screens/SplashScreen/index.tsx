@@ -1,34 +1,44 @@
-import * as React from 'react';
-import {JSX} from 'react';
-import {SafeAreaView, TouchableOpacity, View} from 'react-native';
-import {LogoIcon} from '../../components/icons/LogoIcon';
-import {sharedStyles} from '../../styles/shared';
+import React, {JSX} from 'react';
+import {SafeAreaView, ScrollView, Text, View} from 'react-native';
+import {NavigationProp, useNavigation} from '@react-navigation/native';
+import {RootStackParamList} from '../../types/navigation/stackParamLists';
+import {SCREENS} from '../../types/enums/screens';
 import {styles} from './styles';
-import {MotionWrapper} from '../../components/animations/MotionWrapper';
-import {EnvelopeIcon} from '../../components/icons/EnvelopeIcon';
-import {DocumentIcon} from '../../components/icons/DocumentIcon';
-import {RotateWrapper} from '../../components/animations/RotateWrapper';
+import {sharedStyles} from '../../styles/shared';
+import {shadows} from '../../styles/shadows';
+import {LogoIcon} from '../../assets/icons/LogoIcon';
+import {SplashHeroImage} from '../../components/splashHeroImage';
+import {Button} from '../../components/ui/Button';
+import {onStart} from '../../navigations/services/onStart';
+import {GearIcon} from '../../assets/icons/GearIcon';
+import {DocumentIcon} from '../../assets/icons/DocumentIcon';
 
 export const SplashScreen = (): JSX.Element => {
+  const navigation: NavigationProp<RootStackParamList, SCREENS.SPLASH> =
+    useNavigation();
+
   return (
     <SafeAreaView style={sharedStyles.screenContainer}>
-      <TouchableOpacity style={styles.header}>
-        <LogoIcon width={100} height={100} />
-      </TouchableOpacity>
-
-      <View style={styles.container}>
-        <View style={{width: 250, height: 250, borderWidth: 2}}>
-          <RotateWrapper>
-            <View
-              style={{width: 10, height: 20, backgroundColor: 'red'}}></View>
-          </RotateWrapper>
-        </View>
-        <View style={{width: 250, height: 250, borderWidth: 2}}>
-          <MotionWrapper trajectory={'circle'} x={50} y={30}>
-            <EnvelopeIcon />
-          </MotionWrapper>
-        </View>
+      <View style={styles.header}>
+        <LogoIcon width={70} height={50} />
       </View>
+      <ScrollView style={styles.container}>
+        <SplashHeroImage />
+        <View style={{gap: 10, marginVertical: '10%'}}>
+          <Text style={[styles.heroText, shadows.TextTitle]}>
+            Take care of your eyes with
+          </Text>
+          <Text
+            style={[
+              styles.heroText,
+              styles.heroText__accent,
+              shadows.TextTitle,
+            ]}>
+            H-Eyes
+          </Text>
+        </View>
+        <Button text={"Let's start"} onClick={() => onStart(navigation)} />
+      </ScrollView>
     </SafeAreaView>
   );
 };

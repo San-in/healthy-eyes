@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {BACKGROUND_COLOR} from './background';
+import {BACKGROUND_COLOR} from './backgrounds';
 import {TEXT_COLOR} from './text';
 
 export const sharedStyles = StyleSheet.create({

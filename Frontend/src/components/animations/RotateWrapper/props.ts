@@ -1,17 +1,19 @@
 import React from 'react';
-import {SharedValue} from 'react-native-reanimated';
 
-export type motionWrapperProps = {
-  trajectory: 'circle' | 'quarter' | 'triangle';
-  x?: number;
-  y?: number;
-  speed?: 1000 | 2000 | 3000 | 4000 | 5000 | 6000 | 7000 | 8000 | 9000 | 10000;
+export type RotateWrapperProps = {
+  duration?:
+    | 100
+    | 500
+    | 1000
+    | 1500
+    | 2000
+    | 3000
+    | 4000
+    | 5000
+    | 6000
+    | 7000
+    | 8000
+    | 9000;
+  clockwiseDirection?: boolean;
   children: React.ReactNode;
-};
-
-export type getSelectedAnimatedProps = {
-  x: number;
-  y: number;
-  progress: SharedValue<number>;
-  trajectory: 'triangle' | 'circle' | 'quarter';
 };

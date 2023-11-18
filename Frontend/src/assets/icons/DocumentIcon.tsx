@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Svg, {SvgProps, Path} from 'react-native-svg';
-export const DocumentIcon = (props: SvgProps) => (
+import {JSX} from 'react';
+export const DocumentIcon = (props: SvgProps): JSX.Element => (
   <Svg width={35} height={43} fill="none" {...props}>
     <Path
       fill="#FED36A"

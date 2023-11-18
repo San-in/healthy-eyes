@@ -15,7 +15,7 @@ export const MotionWrapper = ({
   trajectory,
   x = 100,
   y = 100,
-  speed = 5000,
+  duration = 5000,
   children,
 }: motionWrapperProps) => {
   const progress = useSharedValue(0);
@@ -23,7 +23,7 @@ export const MotionWrapper = ({
   useEffect(() => {
     progress.value = withRepeat(
       withTiming(1, {
-        duration: speed,
+        duration: duration,
         easing: Easing.linear,
       }),
       -1,
