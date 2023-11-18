@@ -63,4 +63,6 @@ yarn-error.log
 .metro-health-check*
 
 # testing
+
 /coverage
+../.DS_Store
