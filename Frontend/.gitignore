@@ -1,7 +1,7 @@
 # OSX
 #
 .DS_Store
-
+../.DS_Store
 # Xcode
 #
 build/
@@ -63,6 +63,7 @@ yarn-error.log
 .metro-health-check*
 
 # testing
-
 /coverage
-../.DS_Store
+.ruby-version
+ios/Frontend.xcodeproj/project.pbxproj
+ios/Podfile.lock

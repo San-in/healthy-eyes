@@ -10,7 +10,7 @@ import {ProfileScreen} from '../../screens/main/ProfileScreen';
 const Tab = createBottomTabNavigator<MainStackParamList>();
 export const MainStack = (): JSX.Element => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator initialRouteName={STACKS.HOME}>
       <Tab.Screen name={STACKS.HOME} component={HomeScreen} />
       <Tab.Screen name={STACKS.MENU} component={MenuScreen} />
       <Tab.Screen name={STACKS.PROFILE} component={ProfileScreen} />
