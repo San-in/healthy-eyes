@@ -5,7 +5,7 @@ import {ButtonProps} from './types';
 import {getButtonTextDynamicStyle} from './services/getButtonTextDynamicStyle';
 import {getButtonDynamicStyle} from './services/getButtonDynamicStyle';
 
-export const Button = (props: ButtonProps): JSX.Element => {
+export const CustomButton = (props: ButtonProps): JSX.Element => {
   const {
     text,
     onClick,

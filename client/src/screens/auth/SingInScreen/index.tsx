@@ -6,15 +6,12 @@ import {sharedStyles} from '../../../styles/shared';
 import {TEXT_COLOR, TITLE} from '../../../styles/text';
 import {PADDING_HORIZONTAL_BASIC} from '../../../styles/vars';
 import CustomInput from '../../../components/ui/CustomInput';
-import {FieldValues, SubmitHandler, useForm} from 'react-hook-form';
+import {useForm} from 'react-hook-form';
 import {SCREENS} from '../../../types/enums/screens';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
 import {AuthStackParamList} from '../../../types/navigation/stackParamLists';
-import {Button} from '../../../components/ui/Button';
-
-import store from '../../../mobx';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {STACKS} from '../../../types/enums/stacks';
+import {CustomButton} from '../../../components/ui/CustomButton';
+import {UIStore} from '../../../mobx';
 
 export const SignInScreen = (): JSX.Element => {
   const {
@@ -25,7 +22,7 @@ export const SignInScreen = (): JSX.Element => {
   const navigation: NavigationProp<AuthStackParamList, SCREENS.SIGNIN> =
     useNavigation();
   const onConfirm = () => {
-    store.setIsAuth(true);
+    UIStore.setIsAuth(true);
   };
 
   return (
@@ -46,7 +43,7 @@ export const SignInScreen = (): JSX.Element => {
             pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i,
           }}
         />
-        <Button text={'Log in'} onClick={() => onConfirm()} />
+        <CustomButton text={'Log in'} onClick={() => onConfirm()} />
       </ScrollView>
     </SafeAreaView>
   );

@@ -1,25 +1,16 @@
-import React, {JSX, useEffect} from 'react';
+import React, {JSX} from 'react';
 import {SafeAreaView, ScrollView, Text, View} from 'react-native';
-import {NavigationProp, useNavigation} from '@react-navigation/native';
-import {
-  AuthStackParamList,
-  RootStackParamList,
-} from '../../types/navigation/stackParamLists';
-import {SCREENS} from '../../types/enums/screens';
 import {styles} from './styles';
 import {sharedStyles} from '../../styles/shared';
 import {shadows} from '../../styles/shadows';
 import {LogoIcon} from '../../assets/icons/LogoIcon';
-import {Button} from '../../components/ui/Button';
-import {onStart} from '../../navigations/services/onStart';
 import {SplashHeroImage} from './splashHeroImage';
-
+import {UIStore} from '../../mobx';
+import {CustomButton} from '../../components/ui/CustomButton';
 export const SplashScreen = (): JSX.Element => {
-  const navigation: NavigationProp<RootStackParamList, SCREENS.SPLASH> =
-    useNavigation();
-  useEffect(() => {
-    onStart(navigation);
-  }, []);
+  const onStart = () => {
+    UIStore.setIsFirstRender();
+  };
   return (
     <SafeAreaView style={sharedStyles.screenContainer}>
       <View style={styles.header}>
@@ -40,7 +31,7 @@ export const SplashScreen = (): JSX.Element => {
             H-Eyes
           </Text>
         </View>
-        <Button text={"Let's start"} onClick={() => onStart(navigation)} />
+        <CustomButton text={"Let's start"} onClick={onStart} />
       </ScrollView>
     </SafeAreaView>
   );

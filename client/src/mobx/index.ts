@@ -11,9 +11,8 @@ class Store {
     this.isAuth = status;
   }
 
-  setIsFirstRender(status: boolean) {
-    this.isFirstRender = status;
+  setIsFirstRender() {
+    this.isFirstRender = false;
   }
 }
-const UIStore = new Store();
-export default UIStore;
+export const UIStore = new Store();
