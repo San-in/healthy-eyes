@@ -1,22 +1,25 @@
-import React, {JSX} from 'react';
+import React, {JSX, useEffect} from 'react';
 import {SafeAreaView, ScrollView, Text, View} from 'react-native';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
-import {RootStackParamList} from '../../types/navigation/stackParamLists';
+import {
+  AuthStackParamList,
+  RootStackParamList,
+} from '../../types/navigation/stackParamLists';
 import {SCREENS} from '../../types/enums/screens';
 import {styles} from './styles';
 import {sharedStyles} from '../../styles/shared';
 import {shadows} from '../../styles/shadows';
 import {LogoIcon} from '../../assets/icons/LogoIcon';
-import {SplashHeroImage} from '../../components/splashHeroImage';
 import {Button} from '../../components/ui/Button';
 import {onStart} from '../../navigations/services/onStart';
-import {GearIcon} from '../../assets/icons/GearIcon';
-import {DocumentIcon} from '../../assets/icons/DocumentIcon';
+import {SplashHeroImage} from './splashHeroImage';
 
 export const SplashScreen = (): JSX.Element => {
   const navigation: NavigationProp<RootStackParamList, SCREENS.SPLASH> =
     useNavigation();
-
+  useEffect(() => {
+    onStart(navigation);
+  }, []);
   return (
     <SafeAreaView style={sharedStyles.screenContainer}>
       <View style={styles.header}>

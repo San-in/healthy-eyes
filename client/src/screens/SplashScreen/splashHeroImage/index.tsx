@@ -1,14 +1,14 @@
 import React from 'react';
 import {Image, Dimensions, View} from 'react-native';
-import {RotateWrapper} from '../animations/RotateWrapper';
-import {GearIcon} from '../../assets/icons/GearIcon';
-import {MotionWrapper} from '../animations/MotionWrapper';
-import {DocumentIcon} from '../../assets/icons/DocumentIcon';
-import {EnvelopeIcon} from '../../assets/icons/EnvelopeIcon';
-import {ClockAnimationIcon} from '../animations/ClockAnimationIcon';
-import {BACKGROUND_COLOR} from '../../styles/backgrounds';
-import {DownloadingAnimationIcon} from '../animations/DownloadingAnimationIcon';
 import {styles} from './styles';
+import {RotateWrapper} from '../../../components/animations/RotateWrapper';
+import {GearIcon} from '../../../assets/icons/GearIcon';
+import {ClockAnimationIcon} from '../../../components/animations/ClockAnimationIcon';
+import {BACKGROUND_COLOR} from '../../../styles/backgrounds';
+import {MotionWrapper} from '../../../components/animations/MotionWrapper';
+import {DocumentIcon} from '../../../assets/icons/DocumentIcon';
+import {EnvelopeIcon} from '../../../assets/icons/EnvelopeIcon';
+import {DownloadingAnimationIcon} from '../../../components/animations/DownloadingAnimationIcon';
 
 export const SplashHeroImage = () => {
   const windowWidth: number = Dimensions.get('window').width;
@@ -20,11 +20,11 @@ export const SplashHeroImage = () => {
 
   let imageName;
   if (windowWidth <= 320) {
-    imageName = require('../../assets/splashHeroBg/splash-hero-bg-1x.png');
+    imageName = require('../../../assets/splashHeroBg/splash-hero-bg-1x.png');
   } else if (windowWidth <= 640) {
-    imageName = require('../../assets/splashHeroBg/splash-hero-bg-2x.png');
+    imageName = require('../../../assets/splashHeroBg/splash-hero-bg-2x.png');
   } else {
-    imageName = require('../../assets/splashHeroBg/splash-hero-bg-3x.png');
+    imageName = require('../../../assets/splashHeroBg/splash-hero-bg-3x.png');
   }
 
   return (

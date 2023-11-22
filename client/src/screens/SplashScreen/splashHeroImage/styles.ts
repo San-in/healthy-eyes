@@ -1,7 +1,6 @@
 import {StyleSheet} from 'react-native';
-import {BACKGROUND_COLOR} from '../../styles/backgrounds';
-import {COLORS} from '../../styles/colors';
-import {BORDER_RADIUS_BASIC} from '../../styles/vars';
+import {COLORS} from '../../../styles/colors';
+import {BORDER_RADIUS_BASIC} from '../../../styles/vars';
 
 export const styles = StyleSheet.create({
   container: {

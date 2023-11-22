@@ -2,11 +2,13 @@ import {STACKS} from '../../types/enums/stacks';
 import {SCREENS} from '../../types/enums/screens';
 import {NavigationProp} from '@react-navigation/native';
 import {RootStackParamList} from '../../types/navigation/stackParamLists';
+import store from '../../mobx';
 
-const isAuth: boolean = true;
 export const onStart = (
   navigation: NavigationProp<RootStackParamList, SCREENS.SPLASH>,
 ) => {
+  const {isAuth} = store;
+
   if (isAuth) {
     navigation.navigate(STACKS.MAIN, {
       [STACKS.HOME]: {[SCREENS.HOME]: undefined},

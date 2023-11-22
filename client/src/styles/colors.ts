@@ -15,11 +15,17 @@ export const COLORS: ColorPalette = {
   gray60: '#263238',
   gray70: '#212832',
 
+  green50: '#91C364',
+  green70: '#7EA659',
+
   yellow10: '#FFEBB9',
   yellow20: '#FED36A',
   yellow30: '#BC9434',
   orange10: '#FFBE9D',
   orange20: '#EB996E',
+
+  red50: '#D74E5C',
+  red70: '#C2343F',
 
   navy10: '#BCCFD8',
   navy20: '#6F8793',

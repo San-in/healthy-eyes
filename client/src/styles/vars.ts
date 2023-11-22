@@ -1,2 +1,2 @@
-export const PADDING_HORIZONTAL_BASIC = 25;
+export const PADDING_HORIZONTAL_BASIC = 26;
 export const BORDER_RADIUS_BASIC = 10;

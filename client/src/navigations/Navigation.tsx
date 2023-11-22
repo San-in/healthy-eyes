@@ -1,4 +1,4 @@
-import React, {JSX} from 'react';
+import React, {JSX, useEffect, useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {AuthStack} from './stacks/AuthStack';
 import {MainStack} from './stacks/MainStack';
@@ -7,16 +7,26 @@ import {RootStackParamList} from '../types/navigation/stackParamLists';
 import {SCREENS} from '../types/enums/screens';
 import {SplashScreen} from '../screens/SplashScreen';
 import {STACKS} from '../types/enums/stacks';
+import store from '../mobx';
+import {observer} from 'mobx-react-lite';
 
-const isAuth: boolean = true;
-export const Navigation = (): JSX.Element => {
+export const Navigation = observer(() => {
+  const {isAuth, isFirstRender, setIsFirstRender} = store;
   const Stack = createNativeStackNavigator<RootStackParamList>();
+
+  useEffect(() => {
+    setIsFirstRender(false); // Встановлюємо isFirstRender в false після першого рендера
+  }, []);
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName={SCREENS.SPLASH}
-        screenOptions={{headerShown: false}}>
-        <Stack.Screen name={SCREENS.SPLASH} component={SplashScreen} />
+      <Stack.Navigator screenOptions={{headerShown: false}}>
+        {isFirstRender && (
+          <Stack.Screen
+            name={SCREENS.SPLASH}
+            component={SplashScreen}
+            options={{animation: 'none'}}
+          />
+        )}
         {isAuth ? (
           <Stack.Screen name={STACKS.MAIN} component={MainStack} />
         ) : (
@@ -25,4 +35,4 @@ export const Navigation = (): JSX.Element => {
       </Stack.Navigator>
     </NavigationContainer>
   );
-};
+});

@@ -10,7 +10,9 @@ import {SplashScreen} from '../../screens/SplashScreen';
 const Stack = createNativeStackNavigator<AuthStackParamList>();
 export const AuthStack = (): JSX.Element => {
   return (
-    <Stack.Navigator initialRouteName={SCREENS.SIGNIN}>
+    <Stack.Navigator
+      initialRouteName={SCREENS.SIGNIN}
+      screenOptions={{headerShown: false}}>
       <Stack.Screen name={SCREENS.SIGNIN} component={SignInScreen} />
       <Stack.Screen name={SCREENS.SIGNUP} component={SignUpScreen} />
     </Stack.Navigator>

@@ -13,11 +13,17 @@ export type ColorPalette = {
   gray60: string;
   gray70: string;
 
+  green50: string;
+  green70: string;
+
   yellow10: string;
   yellow20: string;
   yellow30: string;
   orange10: string;
   orange20: string;
+
+  red50: string;
+  red70: string;
 
   navy10: string;
   navy20: string;
