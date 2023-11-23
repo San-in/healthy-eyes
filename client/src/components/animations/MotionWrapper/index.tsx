@@ -10,6 +10,7 @@ import Animated, {
   withRepeat,
 } from 'react-native-reanimated';
 import {getSelectedAnimatedStyle} from './services/getSelectedAnimatedStyle';
+import {sharedStyles} from '../../../styles/shared';
 
 export const MotionWrapper = ({
   trajectory,
@@ -39,7 +40,7 @@ export const MotionWrapper = ({
   });
 
   return (
-    <View style={styles.container}>
+    <View style={[sharedStyles.flexCenter, styles.container]}>
       <Animated.View style={[styles.animatedContainer, selectedAnimatedStyle]}>
         {children}
       </Animated.View>

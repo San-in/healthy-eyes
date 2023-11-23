@@ -1,17 +1,27 @@
 import React, {JSX} from 'react';
-import {SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
-import {LogoIcon} from '../../../assets/icons/LogoIcon';
-import {sharedStyles} from '../../../styles/shared';
-import {TEXT_COLOR, TITLE} from '../../../styles/text';
-import {PADDING_HORIZONTAL_BASIC} from '../../../styles/vars';
+import {
+  SafeAreaView,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {FieldValues, useForm} from 'react-hook-form';
-import {SCREENS} from '../../../types/enums/screens';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
-import {AuthStackParamList} from '../../../types/navigation/stackParamLists';
 import {CustomButton} from '../../../components/ui/CustomButton';
-import {UIStore} from '../../../mobx';
 import {CustomInputWithLabel} from '../../../components/ui/inputs/CustomInputWithLabel';
-import WarningIcon from '../../../assets/icons/WarningIcon';
+import {HorizontalDivider} from '../../../components/ui/HorizontalDivider';
+import {StringWithLink} from '../../../components/ui/StringWithLink';
+import {LogoIcon} from '../../../assets/icons/LogoIcon';
+import UserEmailIcon from '../../../assets/icons/UserEmailIcon';
+import PasswordIcon from '../../../assets/icons/PasswordIcon';
+import GoogleIcon from '../../../assets/icons/GoogleIcon';
+import {UIStore} from '../../../mobx';
+import {sharedStyles} from '../../../styles/shared';
+import {TEXT, TEXT_COLOR, TITLE} from '../../../styles/text';
+import {styles} from './styles';
+import {SCREENS} from '../../../types/enums/screens';
+import {AuthStackParamList} from '../../../types/navigation/stackParamLists';
 
 export const SignInScreen = (): JSX.Element => {
   const {
@@ -21,9 +31,19 @@ export const SignInScreen = (): JSX.Element => {
   } = useForm();
   const navigation: NavigationProp<AuthStackParamList, SCREENS.SIGNIN> =
     useNavigation();
+
   const onConfirm = (data: FieldValues) => {
     console.log(data);
     UIStore.setIsAuth(true);
+  };
+  const onForgotPassword = () => {
+    navigation.navigate(SCREENS.FORGOTPASSWORD);
+  };
+  const onSignUp = () => {
+    navigation.navigate(SCREENS.SIGNUP);
+  };
+  const onGoogle = () => {
+    console.log('Click on Google');
   };
 
   return (
@@ -32,7 +52,9 @@ export const SignInScreen = (): JSX.Element => {
         <View style={styles.logoContainer}>
           <LogoIcon width={140} height={100} />
         </View>
-        <Text style={[TITLE.h1, styles.title]}>Welcome Back!</Text>
+        <Text style={[TITLE.h1, TEXT_COLOR.primary, styles.title]}>
+          Welcome Back!
+        </Text>
         <View style={styles.form}>
           <View style={styles.formContent}>
             <CustomInputWithLabel
@@ -46,7 +68,7 @@ export const SignInScreen = (): JSX.Element => {
                 minLength: 6,
                 pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i,
               }}
-              beforeIcon={<WarningIcon />}
+              beforeIcon={<UserEmailIcon />}
             />
             <CustomInputWithLabel
               label={'Password'}
@@ -60,29 +82,36 @@ export const SignInScreen = (): JSX.Element => {
                 minLength: 6,
                 maxLength: 12,
               }}
-              beforeIcon={<WarningIcon />}
+              beforeIcon={<PasswordIcon />}
             />
           </View>
+          <TouchableOpacity
+            style={styles.forgotPasswordButton}
+            onPress={onForgotPassword}>
+            <Text
+              style={[
+                TEXT_COLOR.secondary,
+                TEXT.large,
+                sharedStyles.textAlignRight,
+              ]}>
+              Forgot password?
+            </Text>
+          </TouchableOpacity>
           <CustomButton text={'Log in'} onClick={handleSubmit(onConfirm)} />
+          <HorizontalDivider text={'Or continue with'} />
+          <CustomButton
+            text={'Google'}
+            beforeIcon={<GoogleIcon />}
+            type={'link'}
+            onClick={onGoogle}
+          />
+          <StringWithLink
+            text={'Don’t have an account?'}
+            link={'Sing Up'}
+            onHandler={onSignUp}
+          />
         </View>
       </ScrollView>
     </SafeAreaView>
   );
 };
-
-export const styles = StyleSheet.create({
-  logoContainer: {
-    flex: 1,
-    alignItems: 'center',
-    marginTop: 30,
-  },
-  contentContainer: {
-    paddingHorizontal: PADDING_HORIZONTAL_BASIC,
-  },
-  title: {
-    color: TEXT_COLOR.primary,
-    marginTop: 50,
-  },
-  form: {},
-  formContent: {},
-});

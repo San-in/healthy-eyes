@@ -7,6 +7,7 @@ import {LogoIcon} from '../../assets/icons/LogoIcon';
 import {SplashHeroImage} from './splashHeroImage';
 import {UIStore} from '../../mobx';
 import {CustomButton} from '../../components/ui/CustomButton';
+import {TEXT_COLOR} from '../../styles/text';
 export const SplashScreen = (): JSX.Element => {
   const onStart = () => {
     UIStore.setIsFirstRender();
@@ -19,15 +20,11 @@ export const SplashScreen = (): JSX.Element => {
       <ScrollView style={styles.container}>
         <SplashHeroImage />
         <View style={{gap: 10, marginVertical: '10%'}}>
-          <Text style={[styles.heroText, shadows.TextTitle]}>
+          <Text
+            style={[styles.heroText, TEXT_COLOR.primary, shadows.TextTitle]}>
             Take care of your eyes with
           </Text>
-          <Text
-            style={[
-              styles.heroText,
-              styles.heroText__accent,
-              shadows.TextTitle,
-            ]}>
+          <Text style={[styles.heroText, TEXT_COLOR.accent, shadows.TextTitle]}>
             H-Eyes
           </Text>
         </View>

@@ -4,6 +4,7 @@ import {styles} from './styles';
 import {ButtonProps} from './types';
 import {getButtonTextDynamicStyle} from './services/getButtonTextDynamicStyle';
 import {getButtonDynamicStyle} from './services/getButtonDynamicStyle';
+import {sharedStyles} from '../../../styles/shared';
 
 export const CustomButton = (props: ButtonProps): JSX.Element => {
   const {
@@ -19,7 +20,8 @@ export const CustomButton = (props: ButtonProps): JSX.Element => {
 
   return (
     <TouchableOpacity onPress={onClick}>
-      <View style={[styles.button, buttonDynamicStyle]}>
+      <View
+        style={[sharedStyles.flexCenter, styles.button, buttonDynamicStyle]}>
         {beforeIcon && beforeIcon}
         <Text style={buttonTextDynamicStyle}>{text}</Text>
         {afterIcon && afterIcon}

@@ -3,6 +3,7 @@ import {Text, View} from 'react-native';
 import {CustomInput} from '../CustomInput';
 import {styles} from './styles';
 import {InputPropsWithLabel} from './types';
+import {TEXT_COLOR} from '../../../../styles/text';
 export const CustomInputWithLabel = ({
   control,
   errors,
@@ -18,7 +19,7 @@ export const CustomInputWithLabel = ({
 }: InputPropsWithLabel): JSX.Element => {
   return (
     <View style={styles.inputField}>
-      <Text style={styles.inputLabel}>{label}</Text>
+      <Text style={[styles.inputLabel, TEXT_COLOR.secondary]}>{label}</Text>
       <CustomInput
         name={name}
         placeholder={placeholder}

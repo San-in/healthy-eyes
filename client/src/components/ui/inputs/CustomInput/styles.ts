@@ -1,6 +1,5 @@
 import {StyleSheet} from 'react-native';
 import {COLORS} from '../../../../styles/colors';
-import {TEXT_COLOR} from '../../../../styles/text';
 import {BACKGROUND_COLOR} from '../../../../styles/backgrounds';
 import {
   BORDER_RADIUS_BASIC,
@@ -15,16 +14,14 @@ export const styles = StyleSheet.create({
     position: 'relative',
   },
   input: {
-    color: TEXT_COLOR.primary,
     fontSize: 18,
     backgroundColor: BACKGROUND_COLOR.secondaryLight,
     borderRadius: BORDER_RADIUS_BASIC,
     padding: PADDING_INPUT_BASIC,
   },
   input__invalid: {
-    backgroundColor: BACKGROUND_COLOR.white,
+    backgroundColor: BACKGROUND_COLOR.primary,
     borderColor: COLORS.red50,
-    color: TEXT_COLOR.black,
     borderWidth: 2,
   },
   inputWithIcon: {

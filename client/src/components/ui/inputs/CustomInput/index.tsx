@@ -6,9 +6,9 @@ import {CrossedEyeButton} from './crossedEyeButton';
 import {IconContainer} from './iconContainer';
 import {generateErrorText} from './services/generateErrorText';
 import {COLORS} from '../../../../styles/colors';
-import {TEXT_COLOR} from '../../../../styles/text';
 import {styles} from './styles';
 import {ErrorsType, InputProps} from './types.';
+import {TEXT_COLOR} from '../../../../styles/text';
 
 export const CustomInput = ({
   control,
@@ -38,6 +38,7 @@ export const CustomInput = ({
                   placeholder={placeholder}
                   style={[
                     styles.input,
+                    TEXT_COLOR.primary,
                     textArea && styles.textArea,
                     errors[name] && styles.input__invalid,
                     beforeIcon && styles.inputWithIcon,
@@ -47,7 +48,7 @@ export const CustomInput = ({
                   value={value}
                   secureTextEntry={isPasswordHidden}
                   placeholderTextColor={
-                    errors[name] ? TEXT_COLOR.red : TEXT_COLOR.secondary
+                    errors[name] ? COLORS.red50 : COLORS.gray30
                   }
                   autoCapitalize={autoCapitalize ? 'words' : 'none'}
                   multiline={textArea}

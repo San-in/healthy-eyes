@@ -2,6 +2,7 @@ import React, {useEffect, useRef} from 'react';
 import {View, Animated, Easing} from 'react-native';
 import {styles} from './stytles';
 import {RotateWrapperProps} from './props';
+import {sharedStyles} from '../../../styles/shared';
 
 export const RotateWrapper = ({
   children,
@@ -32,7 +33,7 @@ export const RotateWrapper = ({
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[sharedStyles.flexCenter, styles.container]}>
       <Animated.View style={[styles.animatedContainer, animatedStyle]}>
         {children}
       </Animated.View>

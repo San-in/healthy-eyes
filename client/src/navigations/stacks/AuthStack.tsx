@@ -4,6 +4,7 @@ import {SCREENS} from '../../types/enums/screens';
 import {AuthStackParamList} from '../../types/navigation/stackParamLists';
 import {SignInScreen} from '../../screens/auth/SingInScreen';
 import {SignUpScreen} from '../../screens/auth/SingUpScreen';
+import {ForgotPasswordScreen} from '../../screens/auth/ForgotPasswordScreen';
 
 const Stack = createNativeStackNavigator<AuthStackParamList>();
 export const AuthStack = (): JSX.Element => {
@@ -12,6 +13,10 @@ export const AuthStack = (): JSX.Element => {
       initialRouteName={SCREENS.SIGNIN}
       screenOptions={{headerShown: false}}>
       <Stack.Screen name={SCREENS.SIGNIN} component={SignInScreen} />
+      <Stack.Screen
+        name={SCREENS.FORGOTPASSWORD}
+        component={ForgotPasswordScreen}
+      />
       <Stack.Screen name={SCREENS.SIGNUP} component={SignUpScreen} />
     </Stack.Navigator>
   );

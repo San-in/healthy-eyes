@@ -13,6 +13,7 @@ import {getHoursDynamicStyle} from './services/getHoursDynamicStyle';
 import {getMinuteDynamicStyle} from './services/getMinuteDynamicStyle';
 import {getContainerDynamicStyle} from './services/getContainerDynamicStyle';
 import {getContainerDynamicDashedStyle} from './services/getContainerDynamicDashedStyle';
+import {sharedStyles} from '../../../styles/shared';
 
 export const ClockAnimationIcon = (props: ClockAnimationIconProps) => {
   useEffect(() => {
@@ -66,8 +67,13 @@ export const ClockAnimationIcon = (props: ClockAnimationIconProps) => {
   };
 
   return (
-    <View style={[styles.container, containerDynamicStyle]}>
-      <View style={[styles.containerDashed, containerDynamicDashedStyle]}>
+    <View style={[sharedStyles.flexCenter, containerDynamicStyle]}>
+      <View
+        style={[
+          sharedStyles.flexCenter,
+          styles.containerDashed,
+          containerDynamicDashedStyle,
+        ]}>
         <Animated.View style={[styles.hand, hourDynamicStyle]} />
         <Animated.View style={[styles.hand, minuteDynamicStyle]} />
       </View>

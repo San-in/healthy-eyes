@@ -7,4 +7,5 @@ export enum SCREENS {
 
   SIGNIN = 'SignInScreen',
   SIGNUP = 'SignUpScreen',
+  FORGOTPASSWORD = 'ForgotPasswordScreen',
 }
