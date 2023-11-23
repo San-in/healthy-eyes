@@ -1,2 +1,3 @@
 export const PADDING_HORIZONTAL_BASIC = 26;
+export const PADDING_INPUT_BASIC = 18;
 export const BORDER_RADIUS_BASIC = 10;

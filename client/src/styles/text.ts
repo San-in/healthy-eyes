@@ -7,6 +7,7 @@ export const TEXT_COLOR: ColorText = {
   secondary: COLORS.gray30,
   accent: COLORS.yellow20,
   black: COLORS.black10,
+  red: COLORS.red50,
 };
 
 export const TITLE = StyleSheet.create({

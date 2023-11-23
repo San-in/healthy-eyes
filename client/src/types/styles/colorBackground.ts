@@ -3,4 +3,5 @@ export type ColorBackground = {
   secondaryLight: string;
   secondaryDark: string;
   accent: string;
+  white: string;
 };

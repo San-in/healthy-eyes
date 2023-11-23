@@ -3,4 +3,5 @@ export type ColorText = {
   secondary: string;
   accent: string;
   black: string;
+  red: string;
 };

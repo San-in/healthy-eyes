@@ -1,14 +1,6 @@
 import {FieldValues, RegisterOptions} from 'react-hook-form';
+import {ErrorsType} from '../types.';
 
-export enum ErrorsType {
-  pattern = 'pattern',
-  required = 'required',
-  minLength = 'minLength',
-  maxLength = 'maxLength',
-  min = 'min',
-  max = 'max',
-  validate = 'validate',
-}
 export const generateErrorText = (
   error: ErrorsType,
   rules:
@@ -18,7 +10,7 @@ export const generateErrorText = (
       >
     | undefined,
 ): string => {
-  console.log(rules);
+  // console.log(rules);
   if (error === ErrorsType.pattern) {
     return `Invalid format`;
   }

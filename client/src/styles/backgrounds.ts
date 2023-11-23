@@ -6,4 +6,5 @@ export const BACKGROUND_COLOR: ColorBackground = {
   secondaryLight: COLORS.gray50,
   secondaryDark: COLORS.gray60,
   accent: COLORS.yellow20,
+  white: COLORS.white20,
 };
