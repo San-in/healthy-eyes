@@ -28,4 +28,7 @@ export const styles = StyleSheet.create({
     paddingVertical: 10,
     marginVertical: 5,
   },
+  checkboxContent: {
+    maxWidth: '90%',
+  },
 });

@@ -22,8 +22,9 @@ import {TEXT, TEXT_COLOR, TITLE} from '../../../styles/text';
 import {styles} from './styles';
 import {SCREENS} from '../../../types/enums/screens';
 import {AuthStackParamList} from '../../../types/navigation/stackParamLists';
+import {observer} from 'mobx-react-lite';
 
-export const SignInScreen = (): JSX.Element => {
+export const SignInScreen = observer((): JSX.Element => {
   const {
     control,
     handleSubmit,
@@ -105,13 +106,17 @@ export const SignInScreen = (): JSX.Element => {
             type={'link'}
             onClick={onGoogle}
           />
-          <StringWithLink
-            text={'Don’t have an account?'}
-            link={'Sing Up'}
-            onHandler={onSignUp}
-          />
+          <View style={styles.stringWithLinkContainer}>
+            <StringWithLink
+              text={'Don’t have an account?'}
+              link={'Sing Up'}
+              align={'center'}
+              onHandler={onSignUp}
+              textSize={'large'}
+            />
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
   );
-};
+});

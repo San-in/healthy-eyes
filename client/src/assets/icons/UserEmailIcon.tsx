@@ -2,14 +2,14 @@ import React from 'react';
 import Svg, {SvgProps, Path} from 'react-native-svg';
 import {COLORS} from '../../styles/colors';
 
-interface CrossedEyeIconProps extends SvgProps {
+interface UserEmailIconProps extends SvgProps {
   stroke?: string;
 }
 
 const UserEmailIcon = ({
   stroke = COLORS.white20,
   ...props
-}: CrossedEyeIconProps) => (
+}: UserEmailIconProps) => (
   <Svg width={24} height={24} fill="none" {...props}>
     <Path
       stroke={stroke}
