@@ -49,7 +49,9 @@ export const SignInScreen = observer((): JSX.Element => {
 
   return (
     <SafeAreaView style={sharedStyles.screenContainer}>
-      <ScrollView style={styles.contentContainer}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        style={styles.contentContainer}>
         <View style={styles.logoContainer}>
           <LogoIcon width={140} height={100} />
         </View>

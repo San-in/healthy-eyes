@@ -14,12 +14,13 @@ export const CustomButton = (props: ButtonProps): JSX.Element => {
     size = 'L',
     beforeIcon,
     afterIcon,
+    disabled,
   } = props;
   const buttonDynamicStyle = getButtonDynamicStyle(type, size);
   const buttonTextDynamicStyle = getButtonTextDynamicStyle(type, size);
 
   return (
-    <TouchableOpacity onPress={onClick}>
+    <TouchableOpacity onPress={onClick} disabled={disabled}>
       <View
         style={[sharedStyles.flexCenter, styles.button, buttonDynamicStyle]}>
         {beforeIcon && beforeIcon}

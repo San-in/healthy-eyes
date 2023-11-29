@@ -1,5 +1,12 @@
-import React, {JSX} from 'react';
-import {SafeAreaView, ScrollView, Text, View} from 'react-native';
+import React, {JSX, useState} from 'react';
+import {
+  KeyboardAvoidingView,
+  Platform,
+  SafeAreaView,
+  ScrollView,
+  Text,
+  View,
+} from 'react-native';
 import {FieldValues, useForm} from 'react-hook-form';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
 import {CustomButton} from '../../../components/ui/CustomButton';
@@ -18,7 +25,7 @@ import {styles} from './styles';
 import {SCREENS} from '../../../types/enums/screens';
 import {AuthStackParamList} from '../../../types/navigation/stackParamLists';
 import {CustomCheckBox} from '../../../components/ui/inputs/CustomCheckBox';
-import PolicyModal from '../../../components/PolicyModal';
+import {PolicyModal} from '../../../components/PolicyModal';
 import {observer} from 'mobx-react-lite';
 
 export const SignUpScreen = observer((): JSX.Element => {
@@ -29,6 +36,7 @@ export const SignUpScreen = observer((): JSX.Element => {
   } = useForm();
   const navigation: NavigationProp<AuthStackParamList, SCREENS.SIGNUP> =
     useNavigation();
+  const [isPolicyModalHide, setIsPolicyModalHide] = useState(true);
 
   const onConfirm = (data: FieldValues) => {
     console.log(data);
@@ -43,92 +51,105 @@ export const SignUpScreen = observer((): JSX.Element => {
 
   return (
     <SafeAreaView style={sharedStyles.screenContainer}>
-      <ScrollView style={styles.contentContainer}>
-        <View style={styles.logoContainer}>
-          <LogoIcon width={140} height={100} />
-        </View>
-        <Text style={[TITLE.h1, TEXT_COLOR.primary, styles.title]}>
-          Create your account
-        </Text>
-        <View style={styles.form}>
-          <View style={styles.formContent}>
-            <CustomInputWithLabel
-              label={'Full name'}
-              name={'name'}
-              placeholder={'Name'}
-              control={control}
-              errors={errors}
-              autoCapitalize
-              rules={{
-                required: true,
-                minLength: 2,
-                maxLength: 18,
-              }}
-              beforeIcon={<UserIcon />}
-            />
-            <CustomInputWithLabel
-              label={'Email Address'}
-              name={'email'}
-              placeholder={'Email'}
-              control={control}
-              errors={errors}
-              rules={{
-                required: true,
-                minLength: 6,
-                pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i,
-              }}
-              beforeIcon={<UserEmailIcon />}
-            />
-            <CustomInputWithLabel
-              label={'Password'}
-              name={'password'}
-              placeholder={'Password'}
-              control={control}
-              errors={errors}
-              secureTextEntry={true}
-              rules={{
-                required: true,
-                minLength: 6,
-                maxLength: 12,
-              }}
-              beforeIcon={<PasswordIcon />}
-            />
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        keyboardVerticalOffset={30}
+        style={{flex: 1}}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          style={styles.contentContainer}>
+          <View style={styles.logoContainer}>
+            <LogoIcon width={140} height={100} />
           </View>
-          <CustomCheckBox
-            control={control}
-            errors={errors}
-            name={'confirmed'}
-            rules={{required: true}}>
-            <View style={styles.checkboxContent}>
-              <StringWithLink
-                text={'I have read & agreed to H-Eyes'}
-                link={'Privacy Policy, Terms & Condition'}
-                onHandler={() => {
-                  UIStore.togglePolicyModalVisible();
+          <Text style={[TITLE.h1, TEXT_COLOR.primary, styles.title]}>
+            Create your account
+          </Text>
+
+          <View style={styles.form}>
+            <View style={styles.formContent}>
+              <CustomInputWithLabel
+                label={'Full name'}
+                name={'name'}
+                placeholder={'Name'}
+                control={control}
+                errors={errors}
+                autoCapitalize
+                rules={{
+                  required: true,
+                  minLength: 2,
+                  maxLength: 18,
                 }}
+                beforeIcon={<UserIcon />}
+              />
+              <CustomInputWithLabel
+                label={'Email Address'}
+                name={'email'}
+                placeholder={'Email'}
+                control={control}
+                errors={errors}
+                rules={{
+                  required: true,
+                  minLength: 6,
+                  pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i,
+                }}
+                beforeIcon={<UserEmailIcon />}
+              />
+              <CustomInputWithLabel
+                label={'Password'}
+                name={'password'}
+                placeholder={'Password'}
+                control={control}
+                errors={errors}
+                secureTextEntry={true}
+                rules={{
+                  required: true,
+                  minLength: 6,
+                  maxLength: 12,
+                }}
+                beforeIcon={<PasswordIcon />}
               />
             </View>
-          </CustomCheckBox>
-          <CustomButton text={'Sing Up'} onClick={handleSubmit(onConfirm)} />
-          <HorizontalDivider text={'Or continue with'} />
-          <CustomButton
-            text={'Google'}
-            beforeIcon={<GoogleIcon />}
-            type={'link'}
-            onClick={onGoogle}
-          />
-          <View style={styles.stringWithLinkContainer}>
-            <StringWithLink
-              text={'Already have an account?'}
-              link={'Log in'}
-              align={'center'}
-              textSize={'large'}
-              onHandler={onLogIn}
+            <CustomCheckBox
+              control={control}
+              errors={errors}
+              name={'confirmed'}
+              rules={{required: true}}>
+              <View style={styles.checkboxContent}>
+                <StringWithLink
+                  text={'I have read & agreed to H-Eyes'}
+                  link={'Privacy Policy, Terms & Condition'}
+                  onHandler={() => {
+                    setIsPolicyModalHide(false);
+                  }}
+                />
+              </View>
+            </CustomCheckBox>
+            <CustomButton text={'Sing Up'} onClick={handleSubmit(onConfirm)} />
+            <HorizontalDivider text={'Or continue with'} />
+            <CustomButton
+              text={'Google'}
+              beforeIcon={<GoogleIcon />}
+              type={'link'}
+              onClick={onGoogle}
             />
+            <View style={styles.stringWithLinkContainer}>
+              <StringWithLink
+                text={'Already have an account?'}
+                link={'Log in'}
+                align={'center'}
+                textSize={'large'}
+                onHandler={onLogIn}
+              />
+            </View>
           </View>
-        </View>
-      </ScrollView>
-      <PolicyModal />
+        </ScrollView>
+        {!isPolicyModalHide && (
+          <PolicyModal
+            isPolicyModalHide={isPolicyModalHide}
+            setIsPolicyModalHide={setIsPolicyModalHide}
+          />
+        )}
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 });

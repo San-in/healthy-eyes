@@ -18,7 +18,7 @@ export const SplashScreen = observer((): JSX.Element => {
       <View style={styles.header}>
         <LogoIcon width={70} height={50} />
       </View>
-      <ScrollView style={styles.container}>
+      <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
         <SplashHeroImage />
         <View style={{gap: 10, marginVertical: '10%'}}>
           <Text
