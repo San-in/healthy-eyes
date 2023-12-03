@@ -16,15 +16,16 @@ import {LogoIcon} from '../../../assets/icons/LogoIcon';
 import UserEmailIcon from '../../../assets/icons/UserEmailIcon';
 import PasswordIcon from '../../../assets/icons/PasswordIcon';
 import GoogleIcon from '../../../assets/icons/GoogleIcon';
-import {UIStore} from '../../../mobx';
 import {sharedStyles} from '../../../styles/shared';
 import {TEXT, TEXT_COLOR, TITLE} from '../../../styles/text';
 import {styles} from './styles';
 import {SCREENS} from '../../../types/enums/screens';
 import {AuthStackParamList} from '../../../types/navigation/stackParamLists';
-import {observer} from 'mobx-react-lite';
+import {login} from '../../../redux/slices/authSlice';
+import {useAppDispatch} from '../../../redux/hooks';
 
-export const SignInScreen = observer((): JSX.Element => {
+export const SignInScreen = (): JSX.Element => {
+  const dispatch = useAppDispatch();
   const {
     control,
     handleSubmit,
@@ -35,7 +36,7 @@ export const SignInScreen = observer((): JSX.Element => {
 
   const onConfirm = (data: FieldValues) => {
     console.log(data);
-    UIStore.setIsAuth(true);
+    dispatch(login());
   };
   const onForgotPassword = () => {
     navigation.navigate(SCREENS.FORGOTPASSWORD);
@@ -121,4 +122,4 @@ export const SignInScreen = observer((): JSX.Element => {
       </ScrollView>
     </SafeAreaView>
   );
-});
+};

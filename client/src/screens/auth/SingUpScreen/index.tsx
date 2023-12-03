@@ -18,7 +18,6 @@ import UserEmailIcon from '../../../assets/icons/UserEmailIcon';
 import UserIcon from '../../../assets/icons/UseIcon';
 import PasswordIcon from '../../../assets/icons/PasswordIcon';
 import GoogleIcon from '../../../assets/icons/GoogleIcon';
-import {UIStore} from '../../../mobx';
 import {sharedStyles} from '../../../styles/shared';
 import {TEXT_COLOR, TITLE} from '../../../styles/text';
 import {styles} from './styles';
@@ -28,7 +27,7 @@ import {CustomCheckBox} from '../../../components/ui/inputs/CustomCheckBox';
 import {PolicyModal} from '../../../components/PolicyModal';
 import {observer} from 'mobx-react-lite';
 
-export const SignUpScreen = observer((): JSX.Element => {
+export const SignUpScreen = (): JSX.Element => {
   const {
     control,
     handleSubmit,
@@ -40,7 +39,6 @@ export const SignUpScreen = observer((): JSX.Element => {
 
   const onConfirm = (data: FieldValues) => {
     console.log(data);
-    UIStore.setIsAuth(true);
   };
   const onLogIn = () => {
     navigation.navigate(SCREENS.SIGNIN);
@@ -152,4 +150,4 @@ export const SignUpScreen = observer((): JSX.Element => {
       </KeyboardAvoidingView>
     </SafeAreaView>
   );
-});
+};
