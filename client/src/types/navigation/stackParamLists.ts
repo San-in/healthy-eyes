@@ -21,7 +21,7 @@ export type AuthStackParamList = {
 };
 
 export type RootStackParamList = {
-  SplashScreen: undefined;
+  GreetingScreen: undefined;
   MainStack: MainStackParamList;
   AuthStack: AuthStackParamList;
 };

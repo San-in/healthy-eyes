@@ -1,5 +1,5 @@
 export enum SCREENS {
-  SPLASH = 'SplashScreen',
+  GREETING = 'GreetingScreen',
 
   HOME = 'HomeScreen',
   PROFILE = 'ProfileScreen',

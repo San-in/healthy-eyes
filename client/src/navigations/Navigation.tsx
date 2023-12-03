@@ -6,7 +6,7 @@ import {selectIsFirstRender} from '../redux/slices/renderSlice';
 import {useAppSelector} from '../redux/hooks';
 import {AuthStack} from './stacks/AuthStack';
 import {MainStack} from './stacks/MainStack';
-import {SplashScreen} from '../screens/SplashScreen';
+import {GreetingScreen} from '../screens/GreetingScreen';
 import {RootStackParamList} from '../types/navigation/stackParamLists';
 import {SCREENS} from '../types/enums/screens';
 import {STACKS} from '../types/enums/stacks';
@@ -22,8 +22,8 @@ export const Navigation = () => {
       <Stack.Navigator screenOptions={{headerShown: false}}>
         {isFirstRender ? (
           <Stack.Screen
-            name={SCREENS.SPLASH}
-            component={SplashScreen}
+            name={SCREENS.GREETING}
+            component={GreetingScreen}
             options={{animation: 'none'}}
           />
         ) : isAuth ? (

@@ -10,7 +10,7 @@ import {DocumentIcon} from '../../../assets/icons/DocumentIcon';
 import {EnvelopeIcon} from '../../../assets/icons/EnvelopeIcon';
 import {DownloadingAnimationIcon} from '../../../components/animations/DownloadingAnimationIcon';
 
-export const SplashHeroImage = () => {
+export const GreetingHeroImage = () => {
   const windowWidth: number = Dimensions.get('window').width;
   const windowHeight: number = Dimensions.get('window').height;
   const containerWidth: number =
@@ -20,11 +20,11 @@ export const SplashHeroImage = () => {
 
   let imageName;
   if (windowWidth <= 320) {
-    imageName = require('../../../assets/splashHeroBg/splash-hero-bg-1x.png');
+    imageName = require('../../../assets/greetingHeroBg/greeting-hero-bg-1x.png');
   } else if (windowWidth <= 640) {
-    imageName = require('../../../assets/splashHeroBg/splash-hero-bg-2x.png');
+    imageName = require('../../../assets/greetingHeroBg/greeting-hero-bg-2x.png');
   } else {
-    imageName = require('../../../assets/splashHeroBg/splash-hero-bg-3x.png');
+    imageName = require('../../../assets/greetingHeroBg/greeting-hero-bg-3x.png');
   }
 
   return (
