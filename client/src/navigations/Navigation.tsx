@@ -1,17 +1,20 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {selectAuth} from '../redux/slices/authSlice';
+import {selectIsFirstRender} from '../redux/slices/renderSlice';
+import {useAppSelector} from '../redux/hooks';
 import {AuthStack} from './stacks/AuthStack';
 import {MainStack} from './stacks/MainStack';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {SplashScreen} from '../screens/SplashScreen';
 import {RootStackParamList} from '../types/navigation/stackParamLists';
 import {SCREENS} from '../types/enums/screens';
-import {SplashScreen} from '../screens/SplashScreen';
 import {STACKS} from '../types/enums/stacks';
-import {observer} from 'mobx-react-lite';
-import {UIStore} from '../mobx';
 
-const Navigation = () => {
-  const {isAuth, isFirstRender} = UIStore;
+export const Navigation = () => {
+  const isAuth = useAppSelector(selectAuth);
+  const isFirstRender = useAppSelector(selectIsFirstRender);
+
   const Stack = createNativeStackNavigator<RootStackParamList>();
 
   return (
@@ -32,5 +35,3 @@ const Navigation = () => {
     </NavigationContainer>
   );
 };
-
-export default observer(Navigation);

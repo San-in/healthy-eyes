@@ -1,17 +1,18 @@
 import React, {JSX} from 'react';
 import {SafeAreaView, ScrollView, Text, View} from 'react-native';
-import {observer} from 'mobx-react-lite';
 import {styles} from './styles';
 import {sharedStyles} from '../../styles/shared';
 import {shadows} from '../../styles/shadows';
 import {LogoIcon} from '../../assets/icons/LogoIcon';
 import {SplashHeroImage} from './splashHeroImage';
-import {UIStore} from '../../mobx';
 import {CustomButton} from '../../components/ui/CustomButton';
 import {TEXT_COLOR} from '../../styles/text';
-export const SplashScreen = observer((): JSX.Element => {
+import {toggleIsFirstRender} from '../../redux/slices/renderSlice';
+import {useAppDispatch} from '../../redux/hooks';
+export const SplashScreen = (): JSX.Element => {
+  const dispatch = useAppDispatch();
   const onStart = () => {
-    UIStore.setIsFirstRender();
+    dispatch(toggleIsFirstRender());
   };
   return (
     <SafeAreaView style={sharedStyles.screenContainer}>
@@ -33,4 +34,4 @@ export const SplashScreen = observer((): JSX.Element => {
       </ScrollView>
     </SafeAreaView>
   );
-});
+};
